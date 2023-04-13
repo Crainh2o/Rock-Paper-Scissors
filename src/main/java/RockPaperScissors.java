@@ -24,5 +24,18 @@ public class RockPaperScissors {
         }
         System.out.println("Computer plays: " + computerPlay);
 
+        //Determine the winner
+        boolean playerWins(String playerMove, String computerPlay) {
+            if (playerMove.equals("rock")) {
+                return computerPlay.equals("scissors");
+            } else if (playerMove.equals("paper")) {
+                return computerPlay.equals("rock");
+            } else {
+                return computerPlay.equals("paper");
+            }
+        }
+
+
+
     }
 }
