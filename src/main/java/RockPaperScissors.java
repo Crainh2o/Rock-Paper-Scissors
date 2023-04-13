@@ -49,7 +49,28 @@ public class RockPaperScissors {
                 }
             }
 
-        }
+            //Player one and two inputs and moves
+            System.out.println("Player One, please enter your move rock, paper,scissors");
+            String playerOne = in.nextLine();
 
-    }
+            String playerTwo;
+            if (!playerOne.equals("rock") && !playerOne.equals("paper") && !playerOne.equals("scissors")) {
+                System.out.println("Invalid input, please enter valid move.");
+            } else {
+                System.out.println("Player Two, please enter your move. rock, paper, scissors");
+                playerTwo = in.nextLine();
+            }
+            if (!playerTwo.equals("rock") && !playerTwo.equals("paper") && !playerTwo.equals("scissors")) {
+                System.out.println("Invalid input, please enter valid move.");
+            }
+            if (playerOne.equals(playerTwo)) {
+                System.out.println("You tied");
+            } else if ((playerOne.equals("rock") && playerTwo.equals("scissors"))
+                (playerOne.equals("scissors") && playerTwo.equals("paper"))
+            (playerOne.equals("paper") && playerTwo.equals("rock"))
+        } System.out.println("Player One has won!");
+        } else if { (playerTwo.equals("rock") && playerOne.equals("scissors"))
+            (playerTwo.equals("scissors") && playerOne.equals("paper"))
+            (playerTwo.equals("paper") && playerOne.equals("rock"))
+        }
 
