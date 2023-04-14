@@ -14,13 +14,14 @@ public class RockPaperScissors extends GameAbstract implements Game {
     public RockPaperScissors() {
         scanner = new Scanner(System.in);
         generator = new Random();
+        playerOne = "Player 1";
+        playerTwo = "Player 2";
     }
 
     protected void initializeGame() {
         //Get user's and computer play (0,1,2) for computer
         System.out.println("Select game. Press C to play computer. Press P to play another player.");
         String playerMove = scanner.nextLine().toUpperCase();
-
         if (playerMove.equals("C")) {
             playerOne = "computer";
             playerTwo = "human";
@@ -32,24 +33,13 @@ public class RockPaperScissors extends GameAbstract implements Game {
             System.exit(0);
         }
     }
-    protected void determineWinner() {
-        String playerOneMove = getPlayerMove(playerOne);
-        String playerTwoMove = getPlayerMove(playerTwo);
-
-        if (playerOneMove.equals(playerTwoMove)) {
-            System.out.println("It's a tie!");
-        } else if (playerOneMove.equals("rock") && playerTwoMove.equals("scissors")
-                || playerOneMove.equals("paper") && playerTwoMove.equals("rock")
-                || playerOneMove.equals("scissors") && playerTwoMove.equals("paper")) {
-            System.out.println(playerOne + " wins!");
-        } else {
-            System.out.println(playerTwo + " wins!");
-        }
-    }
 
     public String getPlayerMove(String player) {
         String move = "";
-        if (playerOne.equals("computer")) {
+        if (player == null) {
+            // handle null player
+            System.out.println("Error: player is null");
+        } else if (player.equals("computer")) {
             int moveCode = generator.nextInt(3);
             if (moveCode == 0) {
                 move = "rock";
@@ -58,14 +48,17 @@ public class RockPaperScissors extends GameAbstract implements Game {
             } else {
                 move = "scissors";
             }
-            System.out.println(playerOne + " played " + move);
-        } else {
-            System.out.println(playerOne + ", please enter your move (rock, paper, or scissors):");
+            System.out.println(player + " played " + move);
+        } else if (player.equals(playerOne) || player.equals(playerTwo)) {
+            System.out.println(player + ", please enter your move (rock, paper, or scissors):");
             move = scanner.nextLine().toLowerCase();
             while (!move.equals("rock") && !move.equals("paper") && !move.equals("scissors")) {
                 System.out.println("Invalid input. Please enter rock, paper, or scissors:");
                 move = scanner.nextLine().toLowerCase();
             }
+        } else {
+            // handle invalid player
+            System.out.println("Error: invalid player");
         }
         return move;
     }
