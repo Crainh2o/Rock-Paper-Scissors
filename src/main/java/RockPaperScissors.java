@@ -8,8 +8,8 @@ public class RockPaperScissors extends GameAbstract implements Game {
     protected String playerOne;
     protected String playerTwo;
     public static void main(String[] args) {
-        RockPaperScissors game = new RockPaperScissors();
-        game.play();
+//        RockPaperScissors game = new RockPaperScissors();
+        PlayOnePlayerTwo.play();
     }
     public RockPaperScissors() {
         scanner = new Scanner(System.in);
@@ -17,7 +17,7 @@ public class RockPaperScissors extends GameAbstract implements Game {
         playerOne = "Player 1";
         playerTwo = "Player 2";
     }
-
+@Override
     protected void initializeGame() {
         //Get user's and computer play (0,1,2) for computer
         System.out.println("Select game. Press C to play computer. Press P to play another player.");
@@ -32,7 +32,9 @@ public class RockPaperScissors extends GameAbstract implements Game {
             System.out.println("Invalid input.");
             System.exit(0);
         }
+
     }
+
 
     public String getPlayerMove(String player) {
         String move = "";
